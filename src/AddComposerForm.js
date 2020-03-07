@@ -1,18 +1,23 @@
 import React from "react";
-import "./AddComposerForm.css";
+import "./AddComposerForm.scss";
 
 class ComposerForm extends React.Component {
   constructor(props) {
     super(props);
+    this.myFileField = React.createRef();
+
     this.state = {
       name: "",
       imageUrl: "",
       works: [],
-      workTemp: ""
+      workTemp: "",
+      isPhotoDefault: true
     };
     this.onFieldChange = this.onFieldChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleAddWork = this.handleAddWork.bind(this);
+    this.onUploadImage = this.onUploadImage.bind(this);
+    this.handleFilePicker = this.handleFilePicker.bind(this);
   }
 
   handleSubmit(event) {
@@ -26,6 +31,30 @@ class ComposerForm extends React.Component {
     });
   }
 
+  onUploadImage(event) {
+    const files = event.target.files;
+    if (files.length > 0) {
+      const reader = new FileReader();
+      reader.readAsDataURL(files[0]);
+      reader.onload = ev => {
+        this.setState({
+          imageUrl: ev.target.result,
+          isPhotoDefault: false
+        });
+      };
+    }
+  }
+
+  handleFilePicker() {
+    this.myFileField.current.click();
+  }
+
+  getPreview() {
+    return !this.state.isPhotoDefault
+      ? { backgroundImage: `url(${this.state.imageUrl})` }
+      : {};
+  }
+
   handleAddWork(event) {
     this.setState({
       works: this.state.works.concat([this.state.workTemp]),
@@ -36,6 +65,7 @@ class ComposerForm extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
+        {/* Name */}
         <div className="AddComposerForm__input">
           <label htmlFor="name">Name</label>
           <input
@@ -45,15 +75,43 @@ class ComposerForm extends React.Component {
             onChange={this.onFieldChange}
           />
         </div>
+        {/* Image */}
         <div className="AddComposerForm__input">
-          <label htmlFor="imageUrl">Image URL</label>
-          <input
-            type="text"
-            name="imageUrl"
-            value={this.state.imageUrl}
-            onChange={this.onFieldChange}
-          />
+          <label htmlFor="btnAddImage" className="fill__label">
+            Image
+          </label>
+          <div className="fill__file-picker-wrapper">
+            <button
+              className="fill__button"
+              type="button"
+              onClick={this.handleFilePicker}
+            >
+              {" "}
+              <img
+                src="/images/camera.svg"
+                className="icon"
+                alt="Subir imagen"
+              />
+            </button>
+            <input
+              className="fill__input-file"
+              id="bntFileAddImage"
+              type="file"
+              name="imageUrl"
+              ref={this.myFileField}
+              // disabled={}
+              // value={this.state.imageUrl}
+
+              onChange={this.onUploadImage}
+              required
+            />
+            <div
+              className="fill__image-preview"
+              style={this.getPreview()}
+            ></div>
+          </div>
         </div>
+        {/* Works */}
         <div className="AddComposerForm__input">
           <label htmlFor="workTemp">Works</label>
           {this.state.works.map(work => (
