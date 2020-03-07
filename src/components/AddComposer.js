@@ -1,5 +1,4 @@
 import React from "react";
-import "./AddComposerForm.scss";
 
 class ComposerForm extends React.Component {
   constructor(props) {
@@ -66,7 +65,7 @@ class ComposerForm extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         {/* Name */}
-        <div className="AddComposerForm__input">
+        <div className="AddComposer__input">
           <label htmlFor="name">Name</label>
           <input
             type="text"
@@ -76,7 +75,7 @@ class ComposerForm extends React.Component {
           />
         </div>
         {/* Image */}
-        <div className="AddComposerForm__input">
+        <div className="AddComposer__input">
           <label htmlFor="btnAddImage" className="fill__label">
             Image
           </label>
@@ -112,7 +111,7 @@ class ComposerForm extends React.Component {
           </div>
         </div>
         {/* Works */}
-        <div className="AddComposerForm__input">
+        <div className="AddComposer__input">
           <label htmlFor="workTemp">Works</label>
           {this.state.works.map(work => (
             <p key={work}>{work}</p>
@@ -132,7 +131,7 @@ class ComposerForm extends React.Component {
   }
 }
 
-function AddComposerForm({ match, onAddComposer }) {
+function AddComposer({ match, onAddComposer }) {
   return (
     <div className="container-fluid col-10">
       <h1>Add composer</h1>
@@ -141,4 +140,4 @@ function AddComposerForm({ match, onAddComposer }) {
   );
 }
 
-export default AddComposerForm;
+export default AddComposer;

@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import ComposerQuiz from "./ComposerQuiz";
+import ComposerQuiz from "../components/ComposerQuiz";
 import Enzyme, { mount, shallow, render } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 Enzyme.configure({ adapter: new Adapter() });
