@@ -1,7 +1,6 @@
-# Composers Quiz 
-
-<div align="right">
-  <img alt="logo-conductor" height= "200" src="src/images/favicon.png">  </div>
+<div >
+  <h2 align="left">Composers Quiz</h2>
+  <img align="right" alt="logo-conductor" height= "100" src="src/images/favicon.png">  </div>
   
 
 Check the link above to play the quiz and asses your knowledge on music composers! :notes: :musical_keyboard: :saxophone:
