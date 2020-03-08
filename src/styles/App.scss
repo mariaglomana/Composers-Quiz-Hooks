@@ -1,15 +1,9 @@
-/* .turn > div {
-  height: 400px;
-} */
-
 .quiz-wrapper {
   padding: 15px;
 }
 
 .hero {
   padding: 0 15px;
-  display: flex;
-  justify-content: space-between;
 
   &__logo {
     width: 5.5rem;
@@ -26,12 +20,12 @@
   &__addBtn {
     float: right;
     max-height: 2.5rem;
-    align-self: baseline;
-    color: #007bff;
-    border-color: #007bff;
+    margin-bottom: 1rem;
+    border-color: #212529;
 
     &:hover {
       text-decoration: none;
+      background-color: #e9ecef;
     }
   }
 }
@@ -40,14 +34,14 @@
   &__wrapper {
     padding-top: 20px;
     padding-bottom: 20px;
-    max-height: 410px;
+    max-height: 370px;
     & > div {
       height: 400px;
     }
   }
   &__composerImage {
     max-height: 100%;
-    max-height: 370px;
+    max-height: 330px;
   }
 }
 

@@ -1,4 +1,6 @@
 import React from "react";
+import "../styles/App.scss";
+
 import Hero from "./Hero";
 import Turn from "./Turn";
 import Footer from "./Footer";

@@ -1,4 +1,5 @@
 import React, { useState, createRef } from "react";
+import "../styles/AddComposer.scss";
 
 const ComposerForm = ({ onAddComposer }) => {
   let [name, setName] = useState("");
@@ -40,66 +41,77 @@ const ComposerForm = ({ onAddComposer }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="AddComposer__input">
-        <label htmlFor="name">Name</label>
-        <input
-          type="text"
-          name="name"
-          value={name}
-          onChange={e => setName(e.target.value)}
-          required
-        />
-      </div>
-      <div className="AddComposer__input">
-        <label htmlFor="btnAddImage" className="fill__label">
-          Image
-        </label>
-        <div className="fill__file-picker-wrapper">
-          <button
-            className="fill__button"
-            type="button"
-            onClick={handleFilePicker}
-          >
-            {" "}
-            <img src="/images/camera.svg" className="icon" alt="Subir imagen" />
-          </button>
-          <input
-            className="fill__input-file"
-            id="bntFileAddImage"
-            type="file"
-            name="imageUrl"
-            ref={myFileField}
-            onChange={onUploadImage}
-            required
-          />
-          <div className="fill__image-preview" style={getPreview()}></div>
+      <div className="addComposer__form">
+        <div>
+          <div className="addComposer__form--input">
+            <label htmlFor="name">Name</label>
+            <input
+              type="text"
+              name="name"
+              value={name}
+              onChange={e => setName(e.target.value)}
+              required
+            />
+          </div>
+          <div className="addComposer__form--input">
+            <div className="addComposer__form--worksLabel">
+              <label htmlFor="workInput">Works</label>
+              <input type="button" value="+" onClick={handleAddWork} />
+            </div>
+            {works.map(work => (
+              <p key={work}>{work}</p>
+            ))}{" "}
+            <input
+              type="text"
+              name="workInput"
+              value={workInput}
+              onChange={e => setWorkInput(e.target.value)}
+            />
+          </div>
+        </div>
+        <div className="addComposer__form--input">
+          <label htmlFor="btnAddImage">Image</label>
+          <div className="addComposer__form--photoWrapper">
+            <button
+              className="addComposer__form--photoBtn"
+              type="button"
+              onClick={handleFilePicker}
+            >
+              {" "}
+              <img
+                src="/images/camera.svg"
+                className="icon"
+                alt="Subir imagen"
+              />
+            </button>
+            <input
+              className="addComposer__form--input-file"
+              id="bntFileAddImage"
+              type="file"
+              name="imageUrl"
+              ref={myFileField}
+              onChange={onUploadImage}
+              required
+            />
+            <div
+              className="addComposer__form--image-preview"
+              style={getPreview()}
+            ></div>
+          </div>
         </div>
       </div>
-      <div className="AddComposer__input">
-        <label htmlFor="workInput">Works</label>
-        {works.map(work => (
-          <p key={work}>{work}</p>
-        ))}{" "}
-        <input
-          type="text"
-          name="workInput"
-          value={workInput}
-          onChange={e => setWorkInput(e.target.value)}
-          required
-        />
-        <input type="button" value="+" onClick={handleAddWork} />
-      </div>
-
-      <input type="submit" value="Add" />
+      <input className="addComposer__form--btn" type="submit" value="Add" />
     </form>
   );
 };
 
 function AddComposer({ match, onAddComposer }) {
   return (
-    <div className="container-fluid col-10">
-      <h1>Add composer</h1>
-      <ComposerForm onAddComposer={onAddComposer} />
+    <div className="addComposer container-fluid ">
+      <div className="addComposer__wrapper">
+        <h1 className="ddComposer__title">Add composer</h1>
+        <ComposerForm onAddComposer={onAddComposer} />
+      </div>
     </div>
   );
 }

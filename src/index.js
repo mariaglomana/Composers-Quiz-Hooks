@@ -2,9 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import * as serviceWorker from "./serviceWorker";
 import "./styles/index.css";
-import "./styles/App.scss";
 import "./styles/bootstrap.min.css";
-import "./styles/AddComposer.scss";
 
 import { BrowserRouter } from "react-router-dom";
 import App from "./components/App";

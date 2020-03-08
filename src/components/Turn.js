@@ -16,7 +16,7 @@ function Turn({ composer, works, highlight, onAnswerSelected }) {
 
   return (
     <div
-      className="row turn__wrapper col-10 offset-1"
+      className="row turn__wrapper col-9 offset-1"
       style={{ backgroundColor: highlightToBgColor(highlight) }}
     >
       <div className="col-4 offset-1">

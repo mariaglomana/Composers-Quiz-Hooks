@@ -1,59 +1,104 @@
-.AddComposer {
-  width: 80%;
-  margin: 50px 10%;
-}
-
-.AddComposer__input {
-  margin-bottom: 20px;
-}
-
-.AddComposer__input > label {
-  display: block;
-}
-
-/* ////////////////////////////// */
-
-$defaultFontSize: 16;
-
-@function rem($pixels) {
-  @return ($pixels / $defaultFontSize * 1rem);
-}
-
-.fill__label {
-  display: block;
-  font-size: rem(14);
-  margin-bottom: rem(7);
-  margin-top: 0.8rem;
-  color: darkblue;
-}
-
-.fill__file-picker-wrapper {
-  display: flex;
-  align-items: flex-start;
-}
-
-.fill__button {
-  background-color: orange;
-  /* box-shadow: 0 0 rem(4) 0 $shadow-button; */
-  border-radius: rem(3);
-  color: white;
-  font-size: rem(14);
-  padding: rem(7) rem(22);
-  border: none;
-  margin-bottom: rem(20);
-}
-
-.fill__input-file {
-  display: none;
-}
-
-.fill__image-preview {
-  width: rem(30);
-  height: rem(30);
-  display: inline-block;
-  border: rem(1) solid green;
-  margin-left: rem(20);
-  background-position: center;
-  background-repeat: no-repeat;
+.addComposer {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background-image: url("../images/music-bckg.jpg");
+  background-position: top left;
   background-size: cover;
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 3rem;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    display: flex;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-width: 48rem;
+    max-height: 28rem;
+    width: calc(100% - 64px);
+    height: calc(100% - 64px);
+    border-radius: 4px;
+    background-color: #ffffff;
+    transform: translate(-50%, -50%);
+  }
+  &__title {
+    display: inline-block;
+    width: 100%;
+  }
+
+  &__form {
+    display: flex;
+    min-height: 15rem;
+    & > div {
+      width: 50%;
+      display: inline-block;
+    }
+    &--input {
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      & > input {
+        max-width: 13rem;
+      }
+    }
+    &--worksLabel {
+      display: flex;
+      & > input {
+        height: 1.5rem;
+        width: 1.5rem;
+        margin: 0 2rem;
+        font-weight: 900;
+        line-height: 1rem;
+      }
+    }
+
+    &--photoWrapper {
+      display: flex;
+    }
+    &--photoBtn {
+      background-color: orange;
+      width: 4rem;
+      height: 4rem;
+      border-radius: 0.5rem;
+      padding: 1rem 2rem;
+      border: none;
+      display: flex;
+      justify-content: center;
+      & > img {
+        color: white;
+        height: 2rem;
+      }
+    }
+    &--input-file {
+      display: none;
+    }
+    &--image-preview {
+      width: 8rem;
+      height: 10rem;
+      // display: inline-block;
+      border: 1px solid #6c757d;
+      margin-left: 1rem;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    &--btn {
+      float: right;
+      min-width: 6rem;
+      margin-right: 3rem;
+    }
+  }
 }
+
+// .addComposer__form--input > label {
+//   display: block;
+// }
+
+// .fill__file-picker-wrapper {
+// }
+
+// .fill__button {
+// }
