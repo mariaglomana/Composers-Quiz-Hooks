@@ -6,6 +6,10 @@ import ComposerQuizWrapper from "./ComposerQuizWrapper";
 import AddComposerWrapper from "./AddComposerWrapper";
 
 function App() {
+  const addComposer = composer => {
+    composers.push(composer);
+  };
+
   return (
     <>
       <Route
@@ -14,7 +18,10 @@ function App() {
         render={routerProps => <ComposerQuizWrapper composers={composers} />}
       />
 
-      <Route path="/add" component={AddComposerWrapper} />
+      <Route
+        path="/add"
+        render={routerProps => <AddComposerWrapper addComposer={addComposer} />}
+      />
     </>
   );
 }

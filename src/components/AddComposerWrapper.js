@@ -1,12 +1,11 @@
 import React from "react";
 import AddComposer from "./AddComposer";
 import { withRouter } from "react-router-dom";
-import composers from "../data/composers";
 
-const AddComposerWrapper = withRouter(({ history }) => (
+const AddComposerWrapper = withRouter(({ history, addComposer }) => (
   <AddComposer
     onAddComposer={composer => {
-      composers.push(composer);
+      addComposer(composer);
       history.push("/");
     }}
   />
