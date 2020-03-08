@@ -1,4 +1,4 @@
-const composers = [
+let composers = [
   {
     name: "Johannes Sebastian Bach",
     imageUrl: "images/composers/jbach.jpg",
@@ -54,7 +54,7 @@ const composers = [
   //     name: "Antonio Vivaldi",
   //     imageUrl: "images/composers/gverdi.jpg",
   //     imageSource: "Wikimedia Commons",
-  //     works: ["La traviata"]
+  //     works: ["4 seasons"]
   //   },
   //   {
   //     name: "Joseph Haydn",

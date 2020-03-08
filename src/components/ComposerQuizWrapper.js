@@ -1,41 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
 
 import ComposerQuiz from "./ComposerQuiz";
 import { shuffle, sample } from "underscore";
-import composers from "../data/composers";
 
-function resetState() {
-  return { turnData: getTurnData(composers), highlight: "" };
-}
+function ComposerQuizWrapper({ composers }) {
+  const turnData = getTurnData(composers);
+  let [highlight, setHighlight] = useState("");
+  let [composerTurn, setComposerTurn] = useState(turnData.composer);
+  let [worksTurn, setWorksTurn] = useState(turnData.works);
 
-let state = resetState();
-
-function getTurnData(composers) {
-  const allWorks = composers.reduce(function(acc, currentVal) {
-    return acc.concat(currentVal.works);
-  }, []);
-  const fourRandomWorks = shuffle(allWorks).slice(0, 4);
-  const answer = sample(fourRandomWorks);
-  return {
-    works: fourRandomWorks,
-    composer: composers.find(composer =>
-      composer.works.some(title => title === answer)
-    )
+  const onAnswerSelected = answer => {
+    const isCorrect = composerTurn.works.some(work => work === answer);
+    setHighlight(isCorrect ? "correct" : "wrong");
   };
-}
-function onAnswerSelected(answer) {
-  const isCorrect = state.turnData.composer.works.some(work => work === answer);
-  state.highlight = isCorrect ? "correct" : "wrong";
-}
 
-function ComposerQuizWrapper() {
+  function resetState() {
+    const turnData = getTurnData(composers);
+    setHighlight("");
+    setComposerTurn(turnData.composer);
+    setWorksTurn(turnData.works);
+  }
+
+  function getTurnData(composers) {
+    const allWorks = composers.reduce(
+      (acc, currentVal) => acc.concat(currentVal.works),
+      []
+    );
+    const fourRandomWorks = shuffle(allWorks).slice(0, 4);
+    const answer = sample(fourRandomWorks);
+    return {
+      works: fourRandomWorks,
+      composer: composers.find(composer =>
+        composer.works.some(title => title === answer)
+      )
+    };
+  }
+
   return (
     <ComposerQuiz
-      {...state}
+      composer={composerTurn}
+      works={worksTurn}
+      highlight={highlight}
       onAnswerSelected={onAnswerSelected}
-      onContinue={() => {
-        state = resetState();
-      }}
+      onContinue={resetState}
     />
   );
 }
