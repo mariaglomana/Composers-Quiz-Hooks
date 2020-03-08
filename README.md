@@ -1,4 +1,8 @@
-# Composers Quiz ![logo-conductor](src/images/favicon.png)
+# Composers Quiz 
+
+<div align="right">
+  <img alt="logo-conductor" height= "200" src="src/images/favicon.png">  </div>
+  
 
 Check the link above to play the quiz and asses your knowledge on music composers! :notes: :musical_keyboard: :saxophone:
 
@@ -6,10 +10,10 @@ Don't worry if you think there are still many important composers that should be
 
 > This project has been created with **React** and using **Hooks**.
 
-If you prefer to review the solution implemented with the help of **Redux**, please check [this repository](https://github.com/mariaglomana/Composers-Quiz-Redux).
+- If you prefer to review the solution implemented with the help of **Redux**, please check [this repository](https://github.com/mariaglomana/Composers-Quiz-Redux).
 
 - If you have preferred to download the repo, do not forget to:
 
-1. Install dependencies with command _npm install_
-2. Run dev-server with _npm run start_
+1. Install dependencies with command ```npm install```
+2. Run dev-server with ```npm run start```
 3. Navigate to application url: _http://localhost:3000_
