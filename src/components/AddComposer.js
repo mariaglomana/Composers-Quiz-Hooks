@@ -79,7 +79,7 @@ const ComposerForm = ({ onAddComposer }) => {
             >
               {" "}
               <img
-                src="/images/camera.svg"
+                src="./images/camera.svg"
                 className="icon"
                 alt="Subir imagen"
               />
