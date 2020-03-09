@@ -1,5 +1,6 @@
 import React, { useState, createRef } from "react";
 import "../styles/AddComposer.scss";
+import cameraIcon from "../images/camera.svg";
 
 const ComposerForm = ({ onAddComposer }) => {
   let [name, setName] = useState("");
@@ -78,11 +79,7 @@ const ComposerForm = ({ onAddComposer }) => {
               onClick={handleFilePicker}
             >
               {" "}
-              <img
-                src="./images/camera.svg"
-                className="icon"
-                alt="Subir imagen"
-              />
+              <img src={cameraIcon} className="icon" alt="Subir imagen" />
             </button>
             <input
               className="addComposer__form--input-file"
