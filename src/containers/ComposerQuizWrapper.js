@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import ComposerQuiz from "./ComposerQuiz";
+import ComposerQuiz from "../components/ComposerQuiz";
 import { shuffle, sample } from "underscore";
 
 function ComposerQuizWrapper({ composers }) {

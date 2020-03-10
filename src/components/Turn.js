@@ -1,6 +1,10 @@
 import React from "react";
 import Work from "./Work";
 import PropTypes from "prop-types";
+import ReactTooltip from "react-tooltip";
+import ToggleContent from "./ToggleContent";
+import Modal from "./Modal";
+
 const colorGreen = "#A3CB38";
 const colorRed = "#EA2027";
 
@@ -20,10 +24,29 @@ function Turn({ composer, works, highlight, onAnswerSelected }) {
       style={{ backgroundColor: highlightToBgColor(highlight) }}
     >
       <div className="col-4 offset-1">
-        <img
-          src={composer.imageUrl}
-          className="turn__composerImage"
-          alt="Composer"
+        <ToggleContent
+          toggle={show => (
+            <>
+              <img
+                src={composer.imageUrl}
+                className="turn__composerImage"
+                alt="Composer"
+                onClick={show}
+                data-tip="Click here to know who I am"
+              />
+              <ReactTooltip
+                place="top"
+                type="light"
+                multiline="true"
+                effect="float"
+              />
+            </>
+          )}
+          content={hide => (
+            <Modal>
+              This is a test <button onClick={hide}>Close</button>
+            </Modal>
+          )}
         />
       </div>
 

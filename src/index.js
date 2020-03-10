@@ -5,7 +5,7 @@ import "./styles/index.css";
 import "./styles/bootstrap.min.css";
 
 import { HashRouter } from "react-router-dom";
-import App from "./components/App";
+import App from "./containers/App";
 
 ReactDOM.render(
   <HashRouter>

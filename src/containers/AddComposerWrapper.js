@@ -1,5 +1,5 @@
 import React from "react";
-import AddComposer from "./AddComposer";
+import AddComposer from "../components/AddComposer";
 import { withRouter } from "react-router-dom";
 
 const AddComposerWrapper = withRouter(({ history, addComposer }) => (
