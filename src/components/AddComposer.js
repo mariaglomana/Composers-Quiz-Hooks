@@ -1,18 +1,40 @@
 import React, { useState, createRef } from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import "../styles/AddComposer.scss";
 import cameraIcon from "../images/camera.svg";
 
 const ComposerForm = ({ onAddComposer }) => {
   let [name, setName] = useState("");
+  let [description, setDescription] = useState("");
   let [imageUrl, setImageUrl] = useState("");
   let [works, setWorks] = useState([]);
   let [workInput, setWorkInput] = useState("");
   let [isPhotoDefault, setIsPhotoDefault] = useState(true);
   const myFileField = createRef();
 
+  toast.configure({
+    autoClose: 2000,
+    draggable: false,
+    position: toast.POSITION.TOP_LEFT
+  });
+  const notify = () =>
+    toast.info("Your composer has been successfully added!", {
+      position: toast.POSITION.TOP_RIGHT,
+      className: "sentForm-toast",
+      autoClose: 3000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true
+    });
+
   const handleSubmit = event => {
     event.preventDefault();
-    onAddComposer({ name, imageUrl, works });
+
+    onAddComposer({ name, imageUrl, works, description });
+    notify();
   };
 
   const onUploadImage = event => {
@@ -43,7 +65,7 @@ const ComposerForm = ({ onAddComposer }) => {
   return (
     <form onSubmit={handleSubmit}>
       <div className="addComposer__form">
-        <div>
+        <div className="addComposer__form--section">
           <div className="addComposer__form--input">
             <label htmlFor="name">Name</label>
             <input
@@ -55,19 +77,38 @@ const ComposerForm = ({ onAddComposer }) => {
             />
           </div>
           <div className="addComposer__form--input">
+            <label htmlFor="name">Description</label>
+            <textarea
+              type="text"
+              name="description"
+              value={description}
+              onChange={e => setDescription(e.target.value)}
+              required
+              rows="2"
+            >
+              Add here some text about the composer's life...
+            </textarea>
+          </div>
+          <div className="addComposer__form--input">
             <div className="addComposer__form--worksLabel">
               <label htmlFor="workInput">Works</label>
-              <input type="button" value="+" onClick={handleAddWork} />
             </div>
             {works.map(work => (
               <p key={work}>{work}</p>
             ))}{" "}
-            <input
-              type="text"
-              name="workInput"
-              value={workInput}
-              onChange={e => setWorkInput(e.target.value)}
-            />
+            {works.length < 3 && (
+              <div className="addComposer__form--workElem">
+                <input
+                  type="text"
+                  name="workInput"
+                  value={workInput}
+                  onChange={e => setWorkInput(e.target.value)}
+                />
+                <button type="button" value="+" onClick={handleAddWork}>
+                  +
+                </button>
+              </div>
+            )}
           </div>
         </div>
         <div className="addComposer__form--input">
@@ -88,7 +129,6 @@ const ComposerForm = ({ onAddComposer }) => {
               name="imageUrl"
               ref={myFileField}
               onChange={onUploadImage}
-              required
             />
             <div
               className="addComposer__form--image-preview"

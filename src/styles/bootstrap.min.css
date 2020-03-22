@@ -2424,6 +2424,8 @@ textarea.form-control.is-invalid {
 .btn:hover {
   color: #212529;
   text-decoration: none;
+  background-color: #e9ecef;
+
 }
 .btn.focus,
 .btn:focus {

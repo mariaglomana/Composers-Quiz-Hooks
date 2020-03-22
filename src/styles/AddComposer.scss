@@ -5,6 +5,7 @@
   background-image: url("../images/music-bckg.jpg");
   background-position: top left;
   background-size: cover;
+  font-size: 0.9rem;
   &__wrapper {
     display: flex;
     flex-direction: column;
@@ -15,8 +16,8 @@
     display: flex;
     overflow-x: hidden;
     overflow-y: auto;
-    max-width: 48rem;
-    max-height: 28rem;
+    max-width: 53rem;
+    max-height: 31rem;
     width: calc(100% - 64px);
     height: calc(100% - 64px);
     border-radius: 4px;
@@ -35,12 +36,23 @@
       width: 50%;
       display: inline-block;
     }
+    & label {
+      font-weight: 700;
+    }
+    &--section {
+      padding-right: 2rem;
+    }
+
     &--input {
       margin-bottom: 20px;
       display: flex;
       flex-direction: column;
-      & > input {
-        max-width: 13rem;
+      & > input,
+      > textarea {
+        width: 100%;
+      }
+      & > p {
+        margin-bottom: 0;
       }
     }
     &--worksLabel {
@@ -51,6 +63,13 @@
         margin: 0 2rem;
         font-weight: 900;
         line-height: 1rem;
+      }
+    }
+    &--workElem {
+      display: flex;
+      & > input {
+        margin-right: 1rem;
+        flex-grow: 1;
       }
     }
 
@@ -91,6 +110,10 @@
       margin-right: 3rem;
     }
   }
+}
+
+.sentForm-toast {
+  background-color: #e67e22;
 }
 
 // .addComposer__form--input > label {

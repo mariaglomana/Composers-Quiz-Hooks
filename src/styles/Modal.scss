@@ -1,7 +1,30 @@
+#modal-root {
+  position: relative;
+  z-index: 999;
+}
 .modal {
   position: fixed;
-  top: 12px;
-  padding: 12px;
-  background-color: white;
-  border: 1px solid grey;
+  height: 70%;
+  width: 70%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  top: 10%;
+  left: 10%;
+  background-color: #e9ecef;
+  border: 3px solid #212529;
+  padding: 5%;
+
+  &__btn {
+    display: block;
+    // position: absolute;
+    right: 10%;
+    max-height: 2.5rem;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+    border-color: #212529;
+  }
 }
